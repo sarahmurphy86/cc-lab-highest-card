@@ -15,13 +15,13 @@ public class PlayerTest {
 
     @Test
     public void playerCanHoldCard(){
-        player.setCard(card);
-        assertEquals(card, player.getCard());
+        player.addCard(card);
+        assertEquals(1, player.cardCount());
     }
 
     @Test
     public void canGetHandValue() {
-        player.setCard(card);
+        player.addCard(card);
         assertEquals(1, player.getHandValue());
     }
 

@@ -1,16 +1,28 @@
+import java.util.ArrayList;
+
 public class Player {
     
-    private Card card;
+    private ArrayList<Card> cards;
 
-    public Card getCard() {
-        return card;
+    Player() {
+        this.cards = new ArrayList<>();
     }
 
-    public void setCard(Card card) {
-        this.card = card;
+    public int cardCount() {
+        return this.cards.size();
+    }
+
+    public void addCard(Card card) {
+        this.cards.add(card);
     }
 
     public int getHandValue() {
-        return this.card.value.getValue();
+        int handValue = 0;
+
+        for (Card card : this.cards){
+            handValue += card.value.getValue();
+        }
+
+        return handValue;
     }
 }

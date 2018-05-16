@@ -34,7 +34,7 @@ public class Game {
     public void deal(int cardCount) {
         for (Player player : players) {
             for (int i = 0; i<cardCount; i++) {
-                player.setCard(deck.takeCard());
+                player.addCard(deck.takeCard());
             }
         }
     }

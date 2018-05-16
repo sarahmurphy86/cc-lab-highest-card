@@ -34,14 +34,28 @@ public class GameTest {
         game.deal(1);
 
         assertEquals(50, game.countDeck());
+        assertEquals(1, player1.cardCount());
+        assertEquals(1, player2.cardCount());
+    }
+
+    @Test
+    public void canDealTwoCardsToPlayers() {
+        game.addPlayer(player1);
+        game.addPlayer(player2);
+
+        game.deal(2);
+
+        assertEquals(48, game.countDeck());
+        assertEquals(2, player1.cardCount());
+        assertEquals(2, player2.cardCount());
     }
 
     @Test
     public void canCheckWinner() {
         Card card1 = new Card(SuitType.DIAMONDS, ValueType.KING);
         Card card2 = new Card(SuitType.DIAMONDS, ValueType.JACK);
-        player1.setCard(card1);
-        player2.setCard(card2);
+        player1.addCard(card1);
+        player2.addCard(card2);
         game.addPlayer(player1);
         game.addPlayer(player2);
 
