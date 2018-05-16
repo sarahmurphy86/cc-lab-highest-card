@@ -38,4 +38,15 @@ public class Game {
             }
         }
     }
+
+    public Player winner() {
+        Player winningPlayer = null;
+        for (Player player : players) {
+            if (winningPlayer == null || player.getHandValue() > winningPlayer.getHandValue()) {
+                winningPlayer = player;
+            }
+        }
+
+        return winningPlayer;
+    }
 }

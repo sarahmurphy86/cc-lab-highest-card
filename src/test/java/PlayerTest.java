@@ -19,4 +19,10 @@ public class PlayerTest {
         assertEquals(card, player.getCard());
     }
 
+    @Test
+    public void canGetHandValue() {
+        player.setCard(card);
+        assertEquals(1, player.getHandValue());
+    }
+
 }

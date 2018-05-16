@@ -5,12 +5,14 @@ import static org.junit.Assert.*;
 
 public class GameTest {
     Game game;
-    Player player;
+    Player player1;
+    Player player2;
 
     @Before
     public void before() {
         game = new Game();
-        player = new Player();
+        player1 = new Player();
+        player2 = new Player();
     }
 
     @Test
@@ -20,18 +22,29 @@ public class GameTest {
 
     @Test
     public void canAddPlayer() {
-        game.addPlayer(player);
+        game.addPlayer(player1);
         assertEquals(1, game.playerCount());
     }
 
     @Test
     public void canDealCardToPlayers() {
-        Player anotherPlayer = new Player();
-        game.addPlayer(player);
-        game.addPlayer(anotherPlayer);
+        game.addPlayer(player1);
+        game.addPlayer(player2);
 
         game.deal(1);
 
         assertEquals(50, game.countDeck());
+    }
+
+    @Test
+    public void canCheckWinner() {
+        Card card1 = new Card(SuitType.DIAMONDS, ValueType.KING);
+        Card card2 = new Card(SuitType.DIAMONDS, ValueType.JACK);
+        player1.setCard(card1);
+        player2.setCard(card2);
+        game.addPlayer(player1);
+        game.addPlayer(player2);
+
+        assertEquals(player1, game.winner());
     }
 }
